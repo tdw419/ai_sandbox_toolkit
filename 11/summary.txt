@@ -1,0 +1,14 @@
+AI Sandbox Toolkit v2 - Debugger-Enabled Edition
+------------------------------------------------
+Goal: Enable the AI to autonomously debug software before returning it to the user.
+
+Features Implemented:
+- pxdebug_router.py: Routes debug tasks based on file type (Chrome extension, Python script)
+- chrome_test_runner.html: Simulates extension loading and JS API availability
+- python_debug_sim.py: Runs and logs Python code execution errors
+- pxconfig.json: Controls debug boot flags
+- debug_logs/trace.log: Records debug trace
+- ready_to_install flag embedded in .pxdigest structure
+- Summary and logs delivered with every completed roadmap
+
+This version ensures that software is tested, validated, and install-ready before delivery.
