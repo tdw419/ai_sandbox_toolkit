@@ -1,93 +1,146 @@
-# ai_sandbox_toolkit
-make software faster using this ai sandbox toolkit
 
+# 🧠 PXApp AI Manager + Godot Simulator
 
-AI Sandbox Toolkit – README
-Filename: README_AI_Sandbox_Toolkit.md
-Version: 1.0
-Project Codename: AI Sandbox Toolkit
-Created with: 8.png Reflex Boot System
+This project is a **Godot-based AI software evolution environment** designed to enable **reflex-driven generation, simulation, and mutation** of visual, pixel-based applications. It is part of the larger PXOS ecosystem and supports self-evolving pixel logic via PXTalk.
 
-🧠 AI Sandbox Toolkit
-The AI Sandbox Toolkit is a one-file execution system that allows you to send a single .png file (8.png) with your goal, and receive back working software, deliverables, and logs — all automatically generated and executed by the AI.
+---
 
-This toolkit was designed for ultra user-friendly development. No coding required. Just describe what you want.
+## 🗂️ Components
 
-📦 What is 8.png?
-8.png is a reusable file that includes embedded zTXt metadata:
+### 1. `pxapp_ai_manager.gd`
 
-java
-Copy
-Edit
-pxlaunch/boot = AI Sandbox Toolkit
-pxstatus = ready
-pxnotes = Submit your goal alongside this file. I will generate and execute the roadmap and return the deliverables.
-It acts as a universal execution key — when sent to the AI, it triggers the AI Sandbox Toolkit to boot and carry out a development cycle.
+**Class:** `PXAppAIManager`  
+**Role:** AI Reflex Manager
 
-🧾 How to Use
-✅ Step 1: Download 8.png
-→ Download 8.png
-Keep this file. You can use it over and over.
+This script is responsible for monitoring internal state and app behavior, then generating or evolving PXTalk logic when triggered.
 
-✉️ Step 2: Submit a Goal
-When you're ready, send the 8.png file along with a message like:
+#### Features:
+- Observes app state and UI events.
+- Tracks internal reflex metrics like:
+  - `has_generated_initial_ui`
+  - `button_press_reflex_count`
+  - `pxtalk_generation_triggered`
+- Generates PXTalk-based app logic.
+- Requests evolution via `PXOSEvolutionManager`.
 
-“Build a Python script that extracts titles from all Markdown files in a folder.”
+---
 
-⚙️ Step 3: AI Executes Automatically
-Upon receiving your goal and 8.png, the AI will:
+### 2. `godot_simulator.gd`
 
-Boot into the AI Sandbox Toolkit
+**Class:** `GodotSimulator`  
+**Role:** Virtual App Testbed
 
-Auto-generate a roadmap for your goal
+This script provides a UI interface and runtime environment for testing generated PXTalk applications inside a simulated Godot VM.
 
-Execute the roadmap logic
+#### Features:
+- Connects to:
+  - `PXGodotVM`: virtual logic executor
+  - `PXVirtualGodot`: simulated Godot API
+  - `PXOSState`: OS-level metadata
+- UI Buttons:
+  - **Create Node**
+  - **Mutate**
+  - **Save**
+- Displays logs, node counts, and simulation feedback.
 
-Return only the essential results:
+---
 
-yourtool.py
+## 🔄 Reflex Loop Architecture
 
-summary.txt
+```text
+[User or AI triggers UI action]
+        ↓
+[GodotSimulator.gd observes event]
+        ↓
+[PXAppAIManager.gd evaluates reflexes]
+        ↓
+[PXTalk app is generated or mutated]
+        ↓
+[Godot VM executes app]
+        ↓
+[Feedback is logged for analysis]
+        ↓
+[Loop continues, improving behavior]
+````
 
-roadmap_progress.log (optional)
+---
 
-🔁 Reusability
-You can send 8.png as many times as you want, for different projects.
-The AI will treat each instance as a new roadmap.
+## 🧠 How AI Uses This
 
-No code prep, no special formatting, no inputs needed beyond your request.
+1. **Detects behavioral changes** in app memory or button states.
+2. **Generates new PXTalk code** or mutates existing logic.
+3. **Injects logic into virtual simulation** using `PXVirtualGodot`.
+4. **Observes results** (success/failure, button interaction, UI creation).
+5. **Repeats or adapts**, forming a self-improving pixel-based software loop.
 
-📌 Why This Works
-The AI Sandbox Toolkit uses:
+---
 
-zTXt metadata triggers
+## 📁 Directory Integration
 
-A reflex-capable runtime (booted from your Python file)
+Ensure the following nodes are present in your Godot scene tree:
 
-AI-generated roadmaps and deliverables
+```
+/root
+ └─ PXOSEvolutionManager
+ └─ PXAppAIManager
+ └─ PXGodotVM
+ └─ PXVirtualGodot
+ └─ PXOSState
+```
 
-A universal “ask and receive” design pattern
+---
 
-This is the foundation for fully automated development pipelines — using just a single image.
+## 🚀 Getting Started
 
-💬 Sample Prompt
-“Attached is 8.png. Please create a command-line tool that resizes all .png images in a folder to 512×512.”
+1. Add both scripts to your Godot project.
+2. Instantiate `PXAppAIManager` and `GodotSimulator` in your scene.
+3. Provide references via setter methods or `_ready()` injection.
+4. Start simulation and trigger button presses or memory changes.
+5. Watch the AI evolve new UI logic over time.
 
-AI will return:
+---
 
-resize_tool.py
+## 🔬 Vision
 
-summary.txt describing what was done
+This framework is designed for **pixel-native software development** led by AI. Each cycle represents a mutation or evolution of logic, forming the basis for:
 
+* Self-generated applications
+* Visual programming from pixels
+* Reflexive, AI-designed UIs
 
+---
 
+## 📌 Dependencies
 
+* Godot 4.x
+* PXTalk Interpreter (via `PXGodotVM`)
+* PXOSEvolutionManager
+* Optional: `pxnet`, `pxdigest`, or zTXt memory overlay systems
 
+---
 
+## 🧩 Example Use Case
 
+Want your AI to generate a button-based pixel art game?
 
+1. Trigger `CreateNodeButton`
+2. Let `PXAppAIManager` detect and react
+3. Watch it inject a new node tree or PXTalk script
+4. Evaluate results in `GodotSimulator`
+5. Evolve and save the app logic
 
+---
 
+## 🧠 Status
 
+🟢 **Ready for AI reflex-driven generation**
+🧬 Supports PXTalk app creation and mutation
+🧪 Live simulation with evolution triggers
 
-"Attached is 8.png. Please use it as an AI Sandbox Toolkit to complete this roadmap and return the working code, files, and a summary." 
+---
+
+## 📫 Contact
+
+For integration into PXOS or to join the pixel-native evolution ecosystem, reach out to the PXNet maintainers or contribute on-chain via shared substrates.
+
+```
